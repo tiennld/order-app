@@ -1,0 +1,24 @@
+networks:
+  order_network:
+
+services:
+  BE:
+    image: duytien0704/order-springboot-be
+    networks:
+      - order_network
+    container_name: BE
+    restart: always
+    ports:
+      - 8080:8080
+  FE:
+    image: duytien0704/order-reactjs-fe
+    networks:
+      - order_network
+    depends_on:
+      - BE
+    container_name: FE
+    restart: always
+    ports:
+      - 3000:3000
+
+  
